@@ -1,7 +1,15 @@
 import React from "react";
+import { Provider } from "react-redux";
+
+import BasicList from "./components/BasicList";
+import store from "./store";
 
 const App: React.FC = () => {
-  return <div className="App"></div>;
+  return (
+    <Provider store={store}>
+      <BasicList />
+    </Provider>
+  );
 };
 
 export default App;
