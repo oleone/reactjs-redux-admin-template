@@ -4,6 +4,7 @@ import { bindActionCreators, Dispatch } from "redux";
 
 import { Basic } from "../../store/ducks/basics/types";
 import { ApplicationState } from "../../store";
+
 import * as BasicsActions from "../../store/ducks/basics/actions";
 
 /**
@@ -39,18 +40,19 @@ class BasicList extends Component<Props> {
   }
 
   render() {
-    const { basics } = this.props;
+    // const { basics } = this.props;
 
     return (
       <div>
-        <li>{basics.map(basic => basic.name)}</li>
+        {/* <li>{basics.map(basic => basic.name)}</li> */}
+        <h1>Hello</h1>
       </div>
     );
   }
 }
 
 const mapStateToProps = ({ basics }: ApplicationState) => ({
-  basics: basics
+  basics: basics.data
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

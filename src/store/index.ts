@@ -1,15 +1,25 @@
 /**
  * Configuração do estado da aplicação de maneira global
  */
-import { createStore, Store } from "redux";
+import { createStore, Store, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
+
 import { BasicsState } from "./ducks/basics/types";
 
 import rootReducer from "./ducks/rootReducer";
+import rootSaga from "./ducks/rootSaga";
 
 export interface ApplicationState {
-    basics: BasicsState
-};
+  basics: BasicsState;
+}
 
-const store: Store<ApplicationState> = createStore(rootReducer);
+const sagaMiddleware = createSagaMiddleware();
+
+const store: Store<ApplicationState> = createStore(
+  rootReducer,
+  applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(rootSaga);
 
 export default store;
